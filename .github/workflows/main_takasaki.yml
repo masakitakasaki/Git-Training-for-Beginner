@@ -25,10 +25,10 @@ jobs:
         dotnet-version: '3.1.301'
 
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build ${{ env.APP_PATH }} --configuration Release
 
     - name: dotnet publish
-      run: dotnet build ${{ env.APP_PATH }} --configuration Release
+      run: dotnet publish ${{ env.APP_PATH }} -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
